@@ -1,0 +1,39 @@
+<div class="content">
+  <div class="homepage">
+    <section class="upload">
+      <h3 class="page-title">Upload image</h3>
+      <div class="form-container">
+        <form id="imgUpload" method="post" enctype="multipart/form-data">
+          <div class="upload-input">
+            <label for="fileUpload" class="custom-file-upload"></label>
+            <div class="img-preview">
+              <img id="previewImg" src="#" alt="preview">
+            </div>
+            <input id="fileUpload" type="file" name="img-file"/>
+          </div>
+          <div class="upload-input">
+            <div class="upload-input-select">
+              <label for="orientation">Slice orientation: </label>
+              <select name="orientation">
+                <option value="vertical">vertical</option>
+                <option value="horizontal">horizontal</option>
+              </select>
+            </div>
+            <div class="upload-input-select">
+              <label for="parts">Output parts: </label>
+              <input type="number" name="parts">
+            </div>
+          </div>
+          <div>
+            <button class="btn btn-disabled" disabled="true" type="submit" id="uploadBtn">Modularize it!</button>
+          </div>
+        </form>
+      </div>
+    </section>
+    <section class="modules">
+      <h1>MODULES</h1>
+      <div class="modules-container"></div>
+    </section>
+  </div>
+</div>
+<script src="js/home.js"></script>
