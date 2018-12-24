@@ -32,12 +32,17 @@ $(document).ready(function () {
             timeout: 600000,
             beforeSend: function(){
               $('.modules-container').empty();
+              $('.details-container').empty();
             },
             success: function (data) {
               $('.modules').show();
+              $('.details').show();
               data.partsArr.forEach((item) => {
-                $('.modules-container').append('<img src="uploads/'+data.publicPath+'/'+item+'" alt="parts">');
+                $('.modules-container').append('<a href="'+data.publicPath+'/'+item+'"><img src="uploads/'+data.localPath+'/'+item+'" alt="parts"></a>');
               });
+              $('.details-container').append(
+                '<a href="'+data.publicPath+'/'+data.filename+'"><img src="uploads/'+data.localPath+'/'+data.filename+'" alt="full"></a>'
+              );
             },
             error: function (e) {
               console.error("ERROR : ", e);

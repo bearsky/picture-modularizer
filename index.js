@@ -3,7 +3,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const nodePath = require('path');
 const config = require('./config');
-const multerUpload = require ('./services/multer');
+const { multerUpload, s3bucket } = require ('./services')(config);
 const { dbMethods } = require('./db/methods')(config);
 const { imageHandler } = require('./helpers');
 const { partsOutline, prepareCropQuery, convertAsync, prepareParts } = imageHandler;
@@ -22,12 +22,13 @@ app.get('/', (req, res) => res.render('home'));
 app.post('/upload',
   multerUpload.single('img-file'),
   (req, res) => {
-    const { destination, filename, path } = req.file;
+    const { destination, filename, path, mimetype } = req.file;
     const { orientation, parts } = req.body;
     const imageData = {
       filename,
       orientation,
-      publicPath: nodePath.parse(filename).name,
+      localPath: nodePath.parse(filename).name,
+      publicPath: `${config.aws.assetsPath}/${nodePath.parse(filename).name}`,
       partsArr: [],
     };
 
@@ -38,6 +39,7 @@ app.post('/upload',
       .then(() => {
         prepareParts(destination, imageData.partsArr)
       })
+      .then(() => s3bucket.uploadFiles(destination, mimetype))
       .then(() => dbMethods.createImage(imageData))
       .then(() => res.status(200).send(imageData))
       .catch(err => console.log(err));

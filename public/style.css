@@ -105,20 +105,15 @@ input::-webkit-inner-spin-button {
 }
 
 /* MODULES SECTION*/
-.modules {display: none;}
+.modules, .details {display: none;}
 .modules-container img {
   padding: 10px;
   width: 10%;
 }
+.details-container img {
+  width: 80%;
+}
 /* END MODULES SECTION*/
-
-
-
-
-
-
-
-
 
 /* ERROR PAGE */
 .error-page {
