@@ -9,14 +9,20 @@ $(document).ready(function () {
       }
     }
 
-    $("#fileUpload").change(function(){
-      $('.custom-file-upload').hide();
-      $('#previewImg').show();
+    $('#fileUpload').change(function(){
+      $('.custom-file-upload, #previewImg').toggle();
+      // $('#previewImg').show();
       $('#uploadBtn').removeClass('btn-disabled').addClass('btn-active').attr('disabled', false);
       readURL(this);
     });
 
-    $("#imgUpload").submit(function (event) {
+    $('.clear-icon').click(function () {
+      $('#fileUpload').val('');
+      $('.custom-file-upload, #previewImg').toggle();
+      $('#uploadBtn').removeClass('btn-active').addClass('btn-disabled').attr('disabled', true);
+    });
+
+    $('#imgUpload').submit(function (event) {
         event.preventDefault();
         var form = $('#imgUpload')[0];
         var data = new FormData(form);

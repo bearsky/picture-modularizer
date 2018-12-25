@@ -5,7 +5,7 @@ Node application for uploading images and breaking them into modular pictures
 * [Express-handlebars](https://github.com/ericf/express-handlebars) template to contain upload form which sends AJAX request to /upload endpoint;
 * the request is handled by [multer](https://github.com/expressjs/multer) to fetch binary image file;
 * locally stored uploaded image files and sliced output files;
-* *// TODO: implement [Heroku](https://www.heroku.com) hosting and [AWS-s3](https://aws.amazon.com/s3/) to store uploaded files and sliced parts;*
+* [Heroku](https://www.heroku.com) hosting and [AWS-s3](https://aws.amazon.com/s3/) to store uploaded files and sliced parts;
 * [mLab](https://mlab.com/) hosted mongodb with Images collection (local db for dev)
 * document structure example:
 
@@ -27,7 +27,6 @@ Node application for uploading images and breaking them into modular pictures
 
 * Sliced image parts are shown on the same home page, below upload form;
 * *// TODO: output uploaded images list and show their metadata*
-* *// TODO: UI improvements, i.e. - 'remove' btn for chosen image (pre-upload preview state)*
 * *// TODO: logger for results and errors, instead of console.logs*
 
 ## How to run (prod):
