@@ -46,6 +46,16 @@ app.post('/upload',
   }
 );
 
+app.get('/list',
+  (req, res) => {
+    dbMethods.getImages()
+      .then(images => {
+        res.render('list', { images });
+      })
+      .catch(err => console.error(err));
+  }
+);
+
 // handle 404
 app.use((req, res) =>{
   res.status(404);

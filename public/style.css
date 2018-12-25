@@ -2,6 +2,10 @@ a {
   color: inherit;
   /* text-decoration: none; */
 }
+li {
+  list-style: none;
+}
+
 .body {
   background-image: url('/images/bg.jpg');
   background-attachment: fixed;
