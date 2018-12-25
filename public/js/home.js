@@ -11,7 +11,6 @@ $(document).ready(function () {
 
     $('#fileUpload').change(function(){
       $('.custom-file-upload, #previewImg').toggle();
-      // $('#previewImg').show();
       $('#uploadBtn').removeClass('btn-disabled').addClass('btn-active').attr('disabled', false);
       readURL(this);
     });
@@ -20,6 +19,23 @@ $(document).ready(function () {
       $('#fileUpload').val('');
       $('.custom-file-upload, #previewImg').toggle();
       $('#uploadBtn').removeClass('btn-active').addClass('btn-disabled').attr('disabled', true);
+    });
+
+    $('#imgUpload').validate({
+        onkeydown: true,
+        rules: {
+            imgFile: {
+                required: true,
+            },
+            parts: {
+                required: true,
+                number: true,
+                min: 2,
+            }
+        },
+        messages: {
+          parts: "At least 2 parts"
+        },
     });
 
     $('#imgUpload').submit(function (event) {
@@ -41,6 +57,7 @@ $(document).ready(function () {
               $('.details-container').empty();
             },
             success: function (data) {
+              $('#uploadBtn').removeClass('btn-active').addClass('btn-disabled').attr('disabled', true);
               $('.modules').show();
               $('.details').show();
               data.partsArr.forEach((item) => {

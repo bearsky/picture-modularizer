@@ -20,7 +20,7 @@ app.use('/uploads', express.static('.public/uploads'));
 app.get('/', (req, res) => res.render('home'));
 
 app.post('/upload',
-  multerUpload.single('img-file'),
+  multerUpload.single('imgFile'),
   (req, res) => {
     const { destination, filename, path, mimetype } = req.file;
     const { orientation, parts } = req.body;

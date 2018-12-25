@@ -56,11 +56,20 @@ a {
 .form-container input{
   text-indent: 10px;
 }
-.upload-input-select {text-align: right;}
-.upload-input-select label {color: #00334e;}
+.upload-input-select {
+  position: relative;
+  text-align: center;
+}
+.upload-input-select input, .upload-input-select select {
+  width: 100%;
+}
+.upload-input-select label {
+  display: block;
+  color: #00334e;
+}
 .form-container select {
   background-color: transparent;
-  width: 50%;
+  /* width: 50%; */
 }
 
 .form-container input[type="file"] {
@@ -112,6 +121,17 @@ input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+label.error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #a94442;
+  border-color: #ebccd1;
+  padding: 1px 5px;
+  display: table;
 }
 
 .btn {
